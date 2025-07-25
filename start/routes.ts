@@ -1,3 +1,4 @@
+/* eslint-disable @adonisjs/prefer-lazy-controller-import */
 /*
 |--------------------------------------------------------------------------
 | Routes file
@@ -7,10 +8,15 @@
 |
 */
 
+import TodosController from '#controllers/todos_controller'
 import router from '@adonisjs/core/services/router'
 
-router.get('/', async () => {
-  return {
-    hello: 'world',
-  }
-})
+router.get('/todos', [TodosController, 'index'])
+
+router.get('/todo/:id', [TodosController, 'get'])
+
+router.post('/todo/add', [TodosController, 'store'])
+
+router.delete('/todo/delete', [TodosController, 'destroy'])
+
+router.put('/todo/edit/:id', [TodosController, 'update'])
