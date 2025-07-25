@@ -9,6 +9,7 @@ export default class extends BaseSchema {
 
       table.string('title')
       table.string('description')
+      table.boolean('is_done').defaultTo(false)
 
       table.timestamp('created_at')
       table.timestamp('updated_at').defaultTo(this.now())

@@ -11,6 +11,9 @@ export default class Todo extends BaseModel {
   @column()
   declare description: string
 
+  @column()
+  declare isDone: boolean
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
