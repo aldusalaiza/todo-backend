@@ -1,21 +1,15 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 
-export default class Todo extends BaseModel {
+export default class User extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
   @column()
-  declare userId: number
+  declare email: string
 
-  @column()
-  declare title: string
-
-  @column()
-  declare description: string
-
-  @column()
-  declare isDone: boolean
+  @column({ serializeAs: null })
+  declare password: string
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
