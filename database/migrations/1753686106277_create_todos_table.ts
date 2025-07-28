@@ -7,12 +7,20 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
 
-      table.string('title')
+      table
+        .integer('user_id')
+        .unsigned()
+        .notNullable()
+        .references('id')
+        .inTable('users')
+        .onDelete('CASCADE')
+
+      table.string('title').notNullable()
       table.string('description')
       table.boolean('is_done').defaultTo(false)
 
-      table.timestamp('created_at')
-      table.timestamp('updated_at').defaultTo(this.now())
+      table.timestamp('created_at').notNullable().defaultTo(this.now())
+      table.timestamp('updated_at').notNullable().defaultTo(this.now())
     })
   }
 
